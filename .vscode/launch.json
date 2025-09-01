@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "runtimeArgs": [
+                "-r",
+                "${workspaceFolder}\\build\\main.js"
+            ],
+            "env": {
+                "TS_NODE_BASEURL": "./build"
+            }
+        }
+    ]
+}
