@@ -1,7 +1,7 @@
 import axios from "axios";
 import { parse } from "node-html-parser";
 
-const systems = require("C:\\Users\\Arron\\system_id.json");
+const systems = require("../system_id.json");
 const COOLDOWNTIMER = 5 * 60;
 const QUEUEID = encodeURI("IBN KHATAB shh relay");
 const TTW = 10;
