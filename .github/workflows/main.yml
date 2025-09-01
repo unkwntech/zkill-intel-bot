@@ -25,10 +25,16 @@ jobs:
             - name: Install PM2
               run: |
                   npm i pm2
-
+            - name: Create env file
+              run: |
+                  cp sample.env .env
+                  sed -i -e "s/\%WEBHOOK/$WEBHOOK/g" .env
+              env:
+                  WEBHOOK: ${{secrets.WEBHOOK}}
             - name: Deploy
               run: |
                   git stash
+                  scp -i deploy.key -r .env github@$DEPLOY_TARGET"source/"
                   ./node_modules/pm2/bin/pm2 deploy ecosystem.config.js production
               env:
                   DEPLOY_TARGET: ${{secrets.DEPLOY_TARGET}}
