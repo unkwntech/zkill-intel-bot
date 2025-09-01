@@ -28,7 +28,7 @@ jobs:
             - name: Create env file
               run: |
                   cp sample.env .env
-                  sed -i -e "s/\%WEBHOOK/$WEBHOOK/g" .env
+                  sed -i -e "s,\%WEBHOOK,$WEBHOOK,g" .env
               env:
                   WEBHOOK: ${{secrets.WEBHOOK}}
             - name: Deploy
