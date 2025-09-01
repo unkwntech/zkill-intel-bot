@@ -1,5 +1,6 @@
 import axios from "axios";
 import { parse } from "node-html-parser";
+import { env } from "process";
 
 const systems = require("../system_id.json");
 const COOLDOWNTIMER = 5 * 60;
@@ -163,10 +164,7 @@ async function processKill() {
 async function sendMessage(message: DiscordMessage) {
     console.log("sendMessage");
     //send webhook
-    axios.post(
-        "https://discord.com/api/webhooks/1406287796758380544/e8x-OcVisg3tRPhkDUTKsikcbSsnufRoKEsSDHrgHPQpCQz803PcyOl-yIwWzHV-Ok6u",
-        message
-    );
+    axios.post(env.webhook, message);
 }
 async function getNextKill() {
     if (STATE != states.READY) return;
